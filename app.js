@@ -23,8 +23,9 @@ server.sockets.on('connection', function(socket) {
     });
 
     socket.on("next", function(data) {
-        console.log(data);
-        console.log(data["Recognition"]);
+        //console.log(data);
+        console.log((data["Recognition"]));
+        String testString = "George Washington was the first president. He helped America win the American Revolution. He also gave his Farewell Address."
         // if (democlientsocket != undefined) {
         //     democlientsocket.emit("next", {});
         // }           
