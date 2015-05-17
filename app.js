@@ -9,6 +9,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+require("./views/master");
+require("./views/makeCards")
 // var AlchemyAPI = require("./alchemyapi");
 // var alchemyapi = new AlchemyAPI()
 
@@ -26,6 +28,12 @@ server.sockets.on('connection', function(socket) {
         //console.log(data);
         console.log((data));
         var testString = "George Washington was the first president. He helped America win the American Revolution. He also gave his Farewell Address."
+        
+        var sentences = testString.split(".");
+        for(var s in sentences)
+        {
+          masterFunction(s);
+        }
         // if (democlientsocket != undefined) {
         //     democlientsocket.emit("next", {});
         // }           

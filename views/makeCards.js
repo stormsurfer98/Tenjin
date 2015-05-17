@@ -69,3 +69,17 @@ function createTermCard(name, description){
                 </div>
               </div>");
 }
+
+
+function chooseCard(type, name, description)
+{
+  if (type == "event") {
+    createEventCard(name, description);
+  };
+  if (type == "person") {
+    createPersonCard(name, description);
+  };
+  if (type == "definition") {
+    createTermCard(name, description);
+  };
+}
