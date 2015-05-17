@@ -27,37 +27,39 @@ html. //START of HTML
 				Parse.initialize("04cGriUtorHQavQ5kjbBfhLvynpv6X0jhsrUuMbO", "uQ11EadEgRBGXIroKV4T2YVGZjaLoKRFngZmDA2N");
 
 				function signUpUser(){
-					var user = new Parse.User();
-					user.set("username", document.getElementById('username-text').value);
-					user.set("password", document.getElementById('password-text').value);
+					// var user = new Parse.User();
+					// user.set("username", document.getElementById('username-text').value);
+					// user.set("password", document.getElementById('password-text').value);
 
-					user.signUp(null, {
-					  success: function(user) {
-						// Hooray! Let them use the app now.
-						window.location.replace("notepad2.html");
-					  },
-					  error: function(user, error) {
-						// Show the error message somewhere and let the user try again.
-						alert("Error: " + error.message);
-					  }
-					});
+					// user.signUp(null, {
+					//   success: function(user) {
+					// 	// Hooray! Let them use the app now.
+					// 	window.location.replace("notepad2.html");
+					//   },
+					//   error: function(user, error) {
+					// 	// Show the error message somewhere and let the user try again.
+					// 	alert("Error: " + error.message);
+					//   }
+					// });
+					document.forms["signUpForm"].submit();
 				}
 
 				function logInUser(){
-					var user = new Parse.User();
-					user.set("username", document.getElementById('username-text').value);
-					user.set("password", document.getElementById('password-text').value);
+					// var user = new Parse.User();
+					// user.set("username", document.getElementById('username-text').value);
+					// user.set("password", document.getElementById('password-text').value);
 
-					Parse.User.logIn(document.getElementById('username-text').value, document.getElementById('password-text').value, {
-						success: function(user) {
-							// Do stuff after successful login.
-							window.location.replace("notepad2.html");
-						},
-						error: function(user, error) {
-							// The login failed. Check error to see why.
-							alert("Error: " + error.message);
-						}
-					});
+					// Parse.User.logIn(document.getElementById('username-text').value, document.getElementById('password-text').value, {
+					// 	success: function(user) {
+					// 		// Do stuff after successful login.
+					// 		window.location.replace("notepad2.html");
+					// 	},
+					// 	error: function(user, error) {
+					// 		// The login failed. Check error to see why.
+					// 		alert("Error: " + error.message);
+					// 	}
+					// });
+					document.signUpForm.submit();
 				}
 			</script>
 	</head>
@@ -89,11 +91,11 @@ html. //START of HTML
 					</header>
 				</div>
 				<div class="content">
-					<form>
+					<form action = "/login" name = "signUpForm" method="post">
 						<label style="margin-bottom:0em; text-align:left">Username:</label>
-						<input id="username-text" type="text" class="form-control" size="30px"/>
+						<input id="username-text" type="text" class="form-control" size="30px" name="username" />
 						<label style="margin-top:0.2em; margin-bottom:0em; text-align:left">Password:</label>
-						<input id="password-text" class="form-control" type="password" size="30px" style="margin-bottom:10px" />
+						<input id="password-text" class="form-control" type="password" size="30px" style="margin-bottom:10px" name = "password"/>
 						<center>
 							<div id="signup" class="button special small" style="margin-top:0.5em; background-color: #CE1E20" onclick="signUpUser()">Sign Up</div>
 							<div id="login" class="button special small" style="margin-top:0.5em; background-color: #CE1E20" onclick="logInUser()">Log In</div>
