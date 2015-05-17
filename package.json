@@ -13,9 +13,9 @@
     "jade": "~1.9.2",
     "morgan": "~1.5.1",
     "serve-favicon": "~2.2.0",
-    "ejs":"*",
-    "ejs-locals":"*",
-    "mongoose" : "*",
+    "ejs": "*",
+    "ejs-locals": "*",
+    "mongoose": "*",
     "node-wit": "~2.0.0"
   }
 }
