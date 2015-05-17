@@ -15,6 +15,7 @@
     "serve-favicon": "~2.2.0",
     "ejs":"*",
     "ejs-locals":"*",
-    "mongoose" : "*"
+    "mongoose" : "*",
+    "node-wit": "~2.0.0"
   }
 }
