@@ -16,6 +16,7 @@
     "ejs": "*",
     "ejs-locals": "*",
     "mongoose": "*",
-    "node-wit": "~2.0.0"
+    "node-wit": "~2.0.0",
+    "socket.io" : "~0.9"
   }
 }

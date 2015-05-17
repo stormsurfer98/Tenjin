@@ -9,6 +9,36 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+// var AlchemyAPI = require("./alchemyapi");
+// var alchemyapi = new AlchemyAPI()
+
+var io  = require('socket.io');  
+var server = io.listen(7000);
+server.sockets.on('connection', function(socket) {  
+    socket.emit('helo', {msg: 'welcome'});
+    socket.on('user', function(data) {
+        if (data.type == "client") {
+            macbook_socket = socket;
+        }
+    });
+
+    socket.on("next", function(data) {
+        console.log(data);
+        console.log(data["Recognition"]);
+        // if (democlientsocket != undefined) {
+        //     democlientsocket.emit("next", {});
+        // }           
+    });
+
+    socket.on("prev", function(data) {
+        console.log("received prev");
+        // if (democlientsocket != undefined) {
+        //     democlientsocket.emit("prev", {});
+        // }
+    });
+});
+
+var macbook_socket = undefined;
 
 var routes = require('./routes/index');
 
@@ -29,7 +59,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', routes);
 
-/* GET home page. */
+//Go from homepage to homescreen
 app.post("/login", function(req, res, next){
   if (req.body.username == "karthikmaiya" && req.body.password == "password") {
     var myUser = new User({
@@ -40,10 +70,10 @@ app.post("/login", function(req, res, next){
     var query  = User.where({ username: 'karthikmaiya', password: 'password' });
     query.findOne(function (err, user) {
       if (err) return handleError(err);
-      console.log(err);
-      console.log(user);
+      // console.log(err);
+      // console.log(user);
       if (user) {
-       console.log("alkjdalkjsd");
+       // console.log("alkjdalkjsd");
         res.render("card", {title: "Tenjin"});
       } else {
         console.log("didnt find anything")
