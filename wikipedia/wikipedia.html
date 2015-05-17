@@ -1,63 +1,38 @@
 <html>
+	<p id="invis" style="display: none;"></p>
 	<script type="text/javascript" src="jQuery-2.1.4.js"></script>
 	<script type="text/javascript">
 
-		/***
-		function getWikipedia(data) {
-			unirest.get("https://community-wikipedia.p.mashape.com/api.php?action=query&format=json&prop=revisions&rvprop=content&titles=Main+Page")
-			.header("X-Mashape-Key", "8koilLCSpRmsh450ZXWRqY76DwVQp1EIBAtjsnJMwmbr0bK4xJ")
-			.header("Accept", "application/json")
-			.end(function (result) {
-			  console.log(result.status, result.headers, result.body);
-			});
-		}
-		**/
-
-		function getWikipedia(data) {
-			var token = "chgaeE1gAeyDZOdiN3Et7l44EJCwOWAp";
-			var content = "";
+		function getWikipedia(data, callback) {
+			myurl = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=" + data.split(" ").join([separator = "%20"]);
 
 			$.ajax({
-				type:"post",
-				url:"https://api.thomsonreuters.com/permid/calais",
-				dataType: "text",
-				data: data,
-				async: false,
-				beforeSend: function(xhr) {
-					xhr.setRequestHeader('Content-Type', "text/raw");
-					xhr.setRequestHeader('x-ag-access-token', token);
-				},
-				success: function(ret, textStatus, XMLHttpRequest) {
-					if(ret.success == true)
-						content = ret;
-						parser = new DOMParser();
-						xmlDoc = parser.parseFromString(ret, "text/xml");
-						stringDoc = new XMLSerializer().serializeToString(xmlDoc);
-						
-						var firstReg = stringDoc.match(/<!--Relations:[\s\S]*?-->/)[0];
-						var secondReg = firstReg.match(/\:(.*)\n/gm);
-						thirdReg = new Array();
-						for(x=0; x<secondReg.length; x+=1) {
-							var sp = secondReg[x].split(", ");
-							for(y=0; y<sp.length; y+=1) {
-								var temp = sp[y].match(/([A-z])\w+/g);
-								if(temp != null) {
-									thirdReg.push(temp.join([separator = ' ']));
-								}
-							}
-						}
-				},
+			    url : myurl,
+			    success : function(contents) {
+			        var contents = JSON.stringify(contents.query.pages);
+					var firstReg = contents.match(/extract[\s\S]*?\}/g)[0];
+					firstReg = firstReg.replace("extract\":\"", "");
+					firstReg = firstReg.replace("\"}", "");
+					firstReg = firstReg.replace(/\\n/g, " ");
+					firstReg = firstReg.replace(/\\"/g, "");
+					contents = firstReg.split(". ");
+					newContents = [];
+					for(x=0; x<3; x+=1) {
+						newContents.push(contents[x]);
+					}
+					finalContents = newContents.join([separator = ". "]) + ".";
+					callback(finalContents)
+			    },
 				error: function(e) {
 					console.log(e);
 				}
 			});
-
-			console.log(thirdReg.join([separator = ", "]))
-			return thirdReg;
-
 		};
 		
-		data = "On Armed Services Day — and a day the Obama administration reported killing a senior Islamic State leader in Syria — most of the nearly dozen GOP presidential prospects at a state party dinner called for a more confrontational stance toward Iran."
-		var x = parseKeyWords(data); 
+		data = "Barack Obama"
+		getWikipedia(data, function(resp) {
+			var x = resp;
+		});
+
 	</script>
 </html>
