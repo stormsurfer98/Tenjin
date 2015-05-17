@@ -1,17 +1,19 @@
+require("./makeCards.js")
+
 //Wit.ai
-function isKeySentence(data) {
-	var w = require('');
+function isKeySentence(data, callback) {
+	var w = require('node-wit');
 	var ACCESS_TOKEN = "FDXLOQWL764U5RYPUWJLYGQPK3S2QZLT";
 
 	w.captureTextIntent(ACCESS_TOKEN, data, function (err, res) {
-		console.log("Response from Wit for text input: ");
 		if (err) console.log("Error: ", err);
-			console.log(JSON.stringify(res, null, " "));
+			out = outcomes[0].intent;
+			callback(out)
 		});
 }
 
-data = "The fifth president of the United States was James Monroe."
-var x = isKeySentence(data); 
+//data = "The fifth president of the United States was James Monroe."
+//var x = isKeySentence(data); 
 
 //Calais
 function parseKeyWords(data) {
@@ -58,8 +60,8 @@ function parseKeyWords(data) {
 
 };
 
-data = "On Armed Services Day — and a day the Obama administration reported killing a senior Islamic State leader in Syria — most of the nearly dozen GOP presidential prospects at a state party dinner called for a more confrontational stance toward Iran."
-var x = parseKeyWords(data); 
+//data = "On Armed Services Day — and a day the Obama administration reported killing a senior Islamic State leader in Syria — most of the nearly dozen GOP presidential prospects at a state party dinner called for a more confrontational stance toward Iran."
+//var x = parseKeyWords(data); 
 
 //Wikipedia
 function getWikipedia(data, callback) {
@@ -88,10 +90,10 @@ function getWikipedia(data, callback) {
 	});
 };
 
-data = "Barack Obama"
-getWikipedia(data, function(resp) {
-	var x = resp;
-});
+//data = "Barack Obama"
+//getWikipedia(data, function(resp) {
+//	var x = resp;
+//});
 
 //NY Times
 function getNYTimes(data) {
@@ -121,18 +123,30 @@ function getNYTimes(data) {
 	return articles;      
 };
 
-data = "Stack Overflow"
-var x = getNYTimes(data); 
+//data = "Stack Overflow"
+//var x = getNYTimes(data); 
 
 function masterFunction(sentence) {
 	data = sentence;
-	category = isKeySentence(data);
-	if(category != "trash") {
-		key_words = parseKeyWords(data);
-		cards = {}
-		for(word : key_words){
-			info = []
-			info.push()
+	isKeySentence(data, function(resp) {
+		category = resp;
+		if(category != "trash") {
+			key_words = parseKeyWords(data);
+			for(var word in key_words) {
+				getWikipedia(word, function(resp) {
+					description = "";
+					def = resp;
+					description += def;
+					articles = getNYTimes(word)
+					for(x=0; x<6; x+=2) {
+						description += "\n\n";
+						description += articles[x];
+						description += "\n";
+						description += articles[x+1];
+					}
+					var makeCard = chooseCard(category, word, description);
+				});
+			}
 		}
-	}
+	});
 }

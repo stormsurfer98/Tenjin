@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 var express = require('express');
 var path = require('path');
 var User = require("./Models/user");
@@ -208,3 +209,5 @@ var http = require('http');
   debug('Listening on ' + bind);
 }
 
+=======
+>>>>>>> Stashed changes
