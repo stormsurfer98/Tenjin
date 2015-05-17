@@ -37,19 +37,17 @@ app.post("/login", function(req, res, next){
       password: req.body.username
     });
 
-    var query  = User.where({ username: 'karthikmaiya' });
+    var query  = User.where({ username: 'karthikmaiya', password: 'password' });
     query.findOne(function (err, user) {
       if (err) return handleError(err);
       console.log(err);
       console.log(user);
       if (user) {
        console.log("alkjdalkjsd");
-       res.send("done");
-       newUser = new User({username: "bob", password: "hola"});
-       newUser.save()
+        res.render("card", {title: "Tenjin"});
       } else {
         console.log("didnt find anything")
-        res.send("whoops")
+        res.send("404 Error")
       }
     });
   };

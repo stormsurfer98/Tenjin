@@ -8,7 +8,7 @@ var myUser = new User;
 
 
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Tenjin' });
+  res.render('card', { title: 'Tenjin' });
 });
 
 module.exports = router;
