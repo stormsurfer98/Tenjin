@@ -1,0 +1,51 @@
+<html>
+	<script type="text/javascript" src="jQuery-2.1.4.js"></script>
+	<script type="text/javascript">
+		function parseKeyWords(data) {
+			var token = "chgaeE1gAeyDZOdiN3Et7l44EJCwOWAp";
+			var content = "";
+
+			$.ajax({
+				type:"post",
+				url:"https://api.thomsonreuters.com/permid/calais",
+				dataType: "text",
+				data: data,
+				async: false,
+				beforeSend: function(xhr) {
+					xhr.setRequestHeader('Content-Type', "text/raw");
+					xhr.setRequestHeader('x-ag-access-token', token);
+				},
+				success: function(ret, textStatus, XMLHttpRequest) {
+					if(ret.success == true)
+						content = ret;
+						parser = new DOMParser();
+						xmlDoc = parser.parseFromString(ret, "text/xml");
+						stringDoc = new XMLSerializer().serializeToString(xmlDoc);
+						
+						var firstReg = stringDoc.match(/<!--Relations:[\s\S]*?-->/)[0];
+						var secondReg = firstReg.match(/\:(.*)\n/gm);
+						thirdReg = new Array();
+						for(x=0; x<secondReg.length; x+=1) {
+							var sp = secondReg[x].split(", ");
+							for(y=0; y<sp.length; y+=1) {
+								var temp = sp[y].match(/([A-z])\w+/g);
+								if(temp != null) {
+									thirdReg.push(temp.join([separator = ' ']));
+								}
+							}
+						}
+				},
+				error: function(e) {
+					console.log(e);
+				}
+			});
+
+			console.log(thirdReg.join([separator = ", "]))
+			return thirdReg;      
+
+		};
+		
+		data = "On Armed Services Day — and a day the Obama administration reported killing a senior Islamic State leader in Syria — most of the nearly dozen GOP presidential prospects at a state party dinner called for a more confrontational stance toward Iran."
+		var x = parseKeyWords(data); 
+	</script>
+</html>
