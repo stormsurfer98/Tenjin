@@ -1,5 +1,3 @@
-require("./makeCards.js")
-
 //Wit.ai
 function isKeySentence(data, callback) {
 	var w = require('node-wit');
@@ -144,7 +142,10 @@ function masterFunction(sentence) {
 						description += "\n";
 						description += articles[x+1];
 					}
-					var makeCard = chooseCard(category, word, description);
+					console.log(category);
+					console.log(word);
+					console.log(description);
+					//var makeCard = chooseCard(category, word, description);
 				});
 			}
 		}
