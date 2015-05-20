@@ -1,0 +1,38 @@
+<html>
+	<p id="invis" style="display: none;"></p>
+	<script type="text/javascript" src="jQuery-2.1.4.js"></script>
+	<script type="text/javascript">
+
+		function getWikipedia(data, callback) {
+			myurl = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=" + data.split(" ").join([separator = "%20"]);
+
+			$.ajax({
+			    url : myurl,
+			    success : function(contents) {
+			        var contents = JSON.stringify(contents.query.pages);
+					var firstReg = contents.match(/extract[\s\S]*?\}/g)[0];
+					firstReg = firstReg.replace("extract\":\"", "");
+					firstReg = firstReg.replace("\"}", "");
+					firstReg = firstReg.replace(/\\n/g, " ");
+					firstReg = firstReg.replace(/\\"/g, "");
+					contents = firstReg.split(". ");
+					newContents = [];
+					for(x=0; x<3; x+=1) {
+						newContents.push(contents[x]);
+					}
+					finalContents = newContents.join([separator = ". "]) + ".";
+					callback(finalContents)
+			    },
+				error: function(e) {
+					console.log(e);
+				}
+			});
+		};
+		
+		data = "Barack Obama"
+		getWikipedia(data, function(resp) {
+			var x = resp;
+		});
+
+	</script>
+</html>
