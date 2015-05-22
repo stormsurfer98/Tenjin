@@ -4,18 +4,8 @@
 	<meta charset="UTF-8">
 	<meta content="IE=edge" http-equiv="X-UA-Compatible">
 	<meta content="initial-scale=1.0, width=device-width" name="viewport">
-	<title>Login - Ten Jin</title>
-
-	<!-- css -->
-	<link href="css/base.min.css" rel="stylesheet">
-	<!-- favicon -->
-	<!-- ... -->
-
-	<!-- ie -->
-		<!--[if lt IE 9]>
-			<script src="js/html5shiv.js" type="text/javascript"></script>
-			<script src="js/respond.js" type="text/javascript"></script>
-		<![endif]-->
+	<title>Login - Tenjin</title>
+	<link href="Design/css/base.min.css" rel="stylesheet">
 </head>
 <body class="avoid-fout page-yellow">
 	<div class="avoid-fout-indicator avoid-fout-indicator-fixed">
@@ -34,7 +24,7 @@
 		</div>
 	</div>
 	<header class="header">
-		<span class="header-logo"><img alt="TENJIN" src="images/users/logo2.png"></span>
+		<span class="header-logo"><img alt="TENJIN" src="Design/images/users/logo2.png"></span>
 	</header>
 	<div class="content">
 		<div class="content-heading"></div>
@@ -49,14 +39,14 @@
                                     <div class="count-particles"> </div>
                                     <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
                                     <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
-									<script src="js/index.js"></script>
+									<script src="Design/js/index.js"></script>
 									<div class="card-inner">
-										<form class="form" action="phpscripts/login.php" method = "post">
+										<form class="form" action="Resources/phpscripts/login.php" method = "post">
 											<div class="form-group form-group-label">
 												<div class="row">
 													<div class="col-md-10 col-md-push-1">
 														<label class="floating-label" for="login-username">Username</label>
-														<input class="form-control" id="login-username" type="text">
+														<input class="form-control" id="login-username" type="text" name = "username">
 													</div>
 												</div>
 											</div>
@@ -64,7 +54,7 @@
 												<div class="row">
 													<div class="col-md-10 col-md-push-1">
 														<label class="floating-label" for="login-password">Password</label>
-														<input class="form-control" id="login-password" type="password">
+														<input class="form-control" id="login-password" type="password" name = "password">
 													</div>
 												</div>
 											</div>
@@ -110,6 +100,6 @@
 								</div>
 							
 						</div>
-	<script src="js/base.min.js" type="text/javascript"></script>
+	<script src="Design/js/base.min.js" type="text/javascript"></script>
 </body>
 </html>
