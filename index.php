@@ -20,7 +20,7 @@
 
 				<!-- Header -->
 					<header id="header" class="alt">
-						<h1><a href="index.html">TENJIN</a></h1>
+						<h1><a href="index.php">TENJIN</a></h1>
 						<nav id="nav">
 							<ul>
 								<li class="special">
@@ -28,9 +28,9 @@
 									<div id="menu">
                                         
 										<ul>
-											<li><a href="index.html">Home</a></li>
+											<li><a href="index.php">Home</a></li>
 											<li><a href="https://youtu.be/tITjtzBLuKs">Video</a></li>
-											<li><a href="page-login.html">Sign In</a></li>
+											<li><a href="page-login.php">Sign In</a></li>
 										</ul>
 									</div>
 								</li>
@@ -45,7 +45,7 @@
                                 
 							<p>Real-time listening. Clean research.</p>
 							<ul class="actions">
-								<li><a href="page-login.html" class="button special">Sign In</a></li>
+								<li><a href="page-login.php" class="button special">Sign In</a></li>
 							</ul>
                             <iframe width="300" height="205" src="https://www.youtube.com/embed/tITjtzBLuKs?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 						</div>
