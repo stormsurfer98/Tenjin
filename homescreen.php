@@ -5,10 +5,10 @@
 		<meta content="IE=edge" http-equiv="X-UA-Compatible">
 		<meta content="initial-scale=1.0, width=device-width" name="viewport">
 		<title>Listen Mode</title>
-
-		<!-- css -->
 		<link href="Design/cardfiles/css/base.min.css" rel="stylesheet">
-		<script type="text/javascript" src = "makeCards.js"></script>
+		<script type="text/javascript" src = "Resources/jsScripts/master.js"></script>
+		<script type="text/javascript" src = "Resources/jsScripts/makeCards.js"></script>
+		<script type="text/javascript" src = "Resources/jsScripts/jQuery-2.1.4.js"></script>
 	</head>
 	<body class="avoid-fout">
 		<div class="avoid-fout-indicator avoid-fout-indicator-fixed">
@@ -92,76 +92,8 @@
 			<div class="content-inner">
 				<div id="cardHolder" class="container">
 					<h2 id="testParagraph" class="content-sub-heading"></h2>
-							<div class="col-lg-3 col-md-4 col-sm-6">
-								<div class="card card-blue">
-									<div class="card-main">
-										<div class="card-inner">
-											<p class="card-heading text-blue">Thomas Jefferson</p>
-											<p>
-												Thomas Jefferson was the 3rd president of the United States!<br>
-												<br>More information about Thomas Jefferson will be here!
-											</p>
-										</div>
-										<div class="card-action">
-											<ul class="nav nav-list pull-left">
-												<li>
-													<a href="javascript:void(0)"><span class="access-hide">Add</span><span class="icon icon-add"></span></a>
-												</li>
-												<li>
-													<a href="javascript:void(0)"><span class="access-hide">Add</span><span class="icon icon-favorite-outline"></span></a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-4 col-sm-6">
-								<div class="card card-green">
-									<div class="card-main">
-										<div class="card-inner">
-											<p class="card-heading text-green">Cold War</p>
-											<p>
-												The Cold War took place over a long period of time!<br>
-												<br>More information about the Cold War will appear here!
-											</p>
-										</div>
-										<div class="card-action">
-											<ul class="nav nav-list pull-left">
-												<li>
-													<a href="javascript:void(0)"><span class="access-hide">Add</span><span class="icon icon-add"></span></a>
-												</li>
-												<li>
-													<a href="javascript:void(0)"><span class="access-hide">Add</span><span class="icon icon-favorite-outline"></span></a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-4 col-sm-6">
-								<div class="card card-red">
-									<div class="card-main">
-										<div class="card-inner">
-											<p class="card-heading text-red">Stamp Act</p>
-											<p>
-												The Stamp Act placed a tax on various paper products, igniting rebellion among the colonists.<br>
-												<br>More information about the Stamp Act will appear here!
-											</p>
-										</div>
-										<div class="card-action">
-											<ul class="nav nav-list pull-left">
-												<li>
-													<a href="javascript:void(0)"><span class="access-hide">Add</span><span class="icon icon-add"></span></a>
-												</li>
-												<li>
-													<a href="javascript:void(0)"><span class="access-hide">Add</span><span class="icon icon-favorite-outline"></span></a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-
+							
+						</div>
 		<footer class="footer">
 			<div class="container">
 				<p>&copy; Tenjin. All rights reserved.</p>
